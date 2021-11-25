@@ -27,19 +27,16 @@ products_table
 
 #######association
 has_one:buyer
-belongs_to:user
+belong_to:user
 
 buyers_table
-|item_price_id|integer|null:false｜foreign_key|
-|products_after_purchase_id|integer|null:false｜primary_key|
+|user|integer|null:false｜foreign_key|
+|product|integer|null:false｜primary_key|
 
 #######association
-belong_to:Products
+belong_to:Product
 has_one:purchase
 
-#######association
-has_one:buyer
-belongs_to：buyer
 Purchase_table
 |Postal_code|string|null:false｜
 |prefectures_id|integer|null:false｜
@@ -47,6 +44,7 @@ Purchase_table
 |address|string|null:false｜
 |Building_name|string|
 |telephone_number|string|null:false｜
+|buyer|integer|foreign_key|
 
 
 string  >  文字
