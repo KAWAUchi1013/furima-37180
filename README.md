@@ -23,14 +23,13 @@ products_table
 |Shipping_area_id|integer|null:false｜
 |Days_to_ship_id|integer|null:false｜
 |Category_id|integer|null:false｜
-|User's_foreign_key|references|null:false｜
+|user|references|null:false,foreign_key|
 
 #######association
 has_one:buyer
 belongs_to:user
 
 buyers_table
-|purchase_goods_id|integer|null:false｜foreign_key|
 |purchase_item_price_id|integer|null:false｜foreign_key|
 |number_of_products_after_purchase_id|integer|null:false｜primary_key|
 
