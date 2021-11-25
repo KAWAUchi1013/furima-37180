@@ -6,15 +6,15 @@ User table
 |Mail address|integer|null: false|
 
 Product table
-|image.id|length|null: false|
-|place.id|length|null: false|
+|image.id|string|null: false|
+|place.id|string|null: false|
 |Sales period|string|null: false|
 ｜Purchase record｜text|null: false|
 
 Buyer table
 |Purchase goods_id|string|null:false｜
 |Purchased item price|string|null:false｜
-|Number of products after purchase|length|null:false｜
+|Number of products after purchase|integer|null:false｜
 
 Purchase address
 |Purchase address|string|null:false｜
