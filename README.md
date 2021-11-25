@@ -1,8 +1,8 @@
-Users table
+users_table
 |Column|Type|Options|
 |nickname|string |null: false|
-|encrypted_password|string |null: false
-|email|string|null: false|
+|encrypted_password|string |null: false|
+|email|string|null: false|unique: true|
 |surname|string|null:false｜
 |name|string|null:false｜
 |first_name_reading|string|null:false｜
@@ -14,7 +14,7 @@ has_many :products
 has_one:Buyers
 
 
-Products table
+products_table
 |Product_name|string|null:false｜
 |Description_of_item|text|null:false｜
 |Product_price|integer|null:false｜
@@ -26,13 +26,13 @@ Products table
 |User's_foreign_key|string|null:false｜
 
 #######association
-has_one :buyer
+has_one:buyer
 belongs_to:user
 
-buyers table
-|Purchase goods_id|integer|null:false｜
-|Purchase item price_id|integer|null:false｜
-|Number_of_products_after_purchase_id|integer|null:false｜
+buyers_table
+|purchase_goods_id|integer|null:false｜
+|purchase_item_price_id|integer|null:false｜
+|number_of_products_after_purchase_id|integer|null:false｜
 
 #######association
 belongs_to:Products
@@ -41,7 +41,7 @@ has_one:purchase
 #######association
 has_one:buyer
 
-Purchase table
+Purchase_table
 |Postal_code|string|null:false｜
 |prefectures_id|string|null:false｜
 |municipalities|string|null:false｜
