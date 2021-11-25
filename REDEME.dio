@@ -11,9 +11,9 @@
                     <mxGeometry y="30" width="160" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="Product table" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="330" y="10" width="160" height="240" as="geometry"/>
+                    <mxGeometry x="334" y="10" width="160" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="image.id　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　&#10;place.id&#10;Sales period&#10;Product name&#10;Description of item&#10;Product price&#10;Product condition&#10;Burden of shipping charges&#10;Shipping area&#10;Days to ship&#10;Category&#10;User's foreign key" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="4" vertex="1">
+                <mxCell id="5" value="place.id&#10;Product name&#10;Description of item&#10;Product price&#10;Product condition&#10;Burden of shipping charges&#10;Shipping area&#10;Days to ship&#10;Category&#10;User's foreign key" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="4" vertex="1">
                     <mxGeometry y="30" width="160" height="210" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="Buyer table" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
@@ -33,7 +33,7 @@
                         <mxRectangle x="30" y="210" width="150" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="12" value="Postal code&#10;prefectures&#10;municipalities&#10;address&#10;Building name&#10;telephone number&#10;Foreign key in the purchase management table" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="11" vertex="1">
+                <mxCell id="12" value="Postal code&#10;prefectures&#10;municipalities&#10;address&#10;Building name&#10;telephone number&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="11" vertex="1">
                     <mxGeometry y="30" width="260" height="159" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;" parent="1" target="5" edge="1">
