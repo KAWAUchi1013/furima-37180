@@ -17,37 +17,36 @@ belongs_to:Buyers
 Products table
 |place_id|string|null: false|
 |Sales period|string|null: false|
-|Product_name|integer|null:false｜
+|Product_name|string|null:false｜
 |Description_of_item|text|null:false｜
-|Product_price|text|null:false｜
-|Product_condition|text|null:false｜
-|Burden_of_shipping charges|integer|null:false｜
-|Shipping_area|integer|null:false｜
-|Days_to_ship|integer|null:false｜
-|Category|integer|null:false｜
+|Product_price|integer|null:false｜
+|Product_condition_id|integer|null:false｜
+|Burden_of_shipping charges_id|integer|null:false｜
+|Shipping_area_id|integer|null:false｜
+|Days_to_ship_id|integer|null:false｜
+|Category_id|integer|null:false｜
 |User's_foreign_key|string|null:false｜
 
 #######asosieite
 has_one :buyer
-belonggs_to:users
+belongs_to:user
 
-Buyers table
-|Purchase goods_id|string|null:false｜
-|Purchase item price|string|null:false｜
+buyers table
+|Purchase goods_id|integer|null:false｜
+|Purchase item price|integer|null:false｜
 |Number of products after purchase|integer|null:false｜
 
 #######asosieite
 has_one :buyer
 has_one :Products
-has_many:Purchase
+has_one:Purchase
 
 #######asosieite
-belonggs_to:users
-has_one:Buyers
+has_one:buyer
 
 Purchase table
 |Postal_code|string|null:false｜
-|prefectures_id|string|null:false｜
+|prefectures_id|integer|null:false｜
 |municipalities|string|null:false｜
 |address|string|null:false｜
 |Building_name|string|
