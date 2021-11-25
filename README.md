@@ -30,16 +30,16 @@ has_one:buyer
 belongs_to:user
 
 buyers_table
-|purchase_item_price_id|integer|null:false｜foreign_key|
-|number_of_products_after_purchase_id|integer|null:false｜primary_key|
+|item_price_id|integer|null:false｜foreign_key|
+|products_after_purchase_id|integer|null:false｜primary_key|
 
 #######association
-belongs_to:Products
+belong_to:Products
 has_one:purchase
 
 #######association
 has_one:buyer
-
+belongs_to：buyer
 Purchase_table
 |Postal_code|string|null:false｜
 |prefectures_id|integer|null:false｜
