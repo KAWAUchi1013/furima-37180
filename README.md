@@ -37,7 +37,6 @@ buyers_table
 belong_to:product
 has_one:purchase
 belongs_to:user
-has_one:buyer
 
 purchases_table
 |postal_code|string|null:false｜
