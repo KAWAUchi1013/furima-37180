@@ -1,5 +1,5 @@
 users_table
-|Column|Type|Options|
+|column|Type|Options|
 |nickname|string |null: false|
 |encrypted_password|string |null: false|
 |email|string|null: false|unique: true|
@@ -11,18 +11,18 @@ users_table
 
 #######association
 has_many :products
-has_one:Buyers
+belong_to:buyers
 
 
 products_table
-|Product_name|string|null:false｜
-|Description_of_item|text|null:false｜
-|Product_price|integer|null:false｜
-|Product_condition_id|integer|null:false｜
-|Burden_of_shipping_charges_id|integer|null:false｜
-|Shipping_area_id|integer|null:false｜
-|Days_to_ship_id|integer|null:false｜
-|Category_id|integer|null:false｜
+|product_name|string|null:false｜
+|description_of_item|text|null:false｜
+|product_price|integer|null:false｜
+|product_condition_id|integer|null:false｜
+|burden_of_shipping_charges_id|integer|null:false｜
+|shipping_area_id|integer|null:false｜
+|days_to_ship_id|integer|null:false｜
+|category_id|integer|null:false｜
 |user|references|null:false,foreign_key|
 
 #######association
@@ -30,21 +30,21 @@ has_one:buyer
 belong_to:user
 
 buyers_table
-|user|integer|null:false｜foreign_key|
-|product|integer|null:false｜primary_key|
+|user_id|integer|null:false｜foreign_key: true|
+|product_id|integer|null:false｜foreign_key: true|
 
 #######association
-belong_to:Product
+belong_to:product
 has_one:purchase
+belongs_to:buyer
 
-Purchase_table
-|Postal_code|string|null:false｜
-|prefectures_id|integer|null:false｜
+purchase_table
+|postal_code|string|null:false｜
 |municipalities|string|null:false｜
 |address|string|null:false｜
-|Building_name|string|
+|building_name|string|
 |telephone_number|string|null:false｜
-|buyer|integer|foreign_key|
+|buyer_id|integer|foreign_key: true|
 
 
 string  >  文字
