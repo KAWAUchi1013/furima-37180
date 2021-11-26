@@ -10,8 +10,8 @@ users_table
 |birthday|date|null:false｜
 
 #######association
-has_many :products
-belongs_to:buyers
+has_many:products
+has_many:buyers
 
 
 products_table
@@ -45,7 +45,10 @@ purchases_table
 |building_name|string|
 |telephone_number|string|null:false｜
 |buyer|references|null:false|foreign_key: true|
-|prefectures|string|null:false｜
+|shipping_area_id|integer|null:false｜
+
+#######association
+belongs_to:buyer
 
 string  >  文字
 text  > 長文
