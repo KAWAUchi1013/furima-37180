@@ -11,7 +11,7 @@ users_table
 
 #######association
 has_many :products
-belong_to:buyers
+belongs_to:buyers
 
 
 products_table
@@ -19,33 +19,34 @@ products_table
 |description_of_item|text|null:false｜
 |product_price|integer|null:false｜
 |product_condition_id|integer|null:false｜
-|burden_of_shipping_charges_id|integer|null:false｜
+|burden_of_shipping_charge_id|integer|null:false｜
 |shipping_area_id|integer|null:false｜
 |days_to_ship_id|integer|null:false｜
 |category_id|integer|null:false｜
-|user|references|null:false,foreign_key|
+|user|references|null:false,foreign_key|foreign_key: true|
 
 #######association
 has_one:buyer
 belong_to:user
 
 buyers_table
-|user_id|integer|null:false｜foreign_key: true|
-|product_id|integer|null:false｜foreign_key: true|
+|user|references|null:false｜foreign_key: true|
+|product|references|null:false｜foreign_key: true|
 
 #######association
 belong_to:product
 has_one:purchase
-belongs_to:buyer
+belongs_to:user
+has_one:buyer
 
-purchase_table
+purchases_table
 |postal_code|string|null:false｜
 |municipalities|string|null:false｜
 |address|string|null:false｜
 |building_name|string|
 |telephone_number|string|null:false｜
-|buyer_id|integer|foreign_key: true|
-
+|buyer|references|null:false|foreign_key: true|
+|prefectures|string|null:false｜
 
 string  >  文字
 text  > 長文
