@@ -1,24 +1,57 @@
-# README
+users_table
+|column|Type|Options|
+|nickname|string |null: false|
+|encrypted_password|string |null: false|
+|email|string|null: false|unique: true|
+|surname|string|null:false｜
+|name|string|null:false｜
+|first_name_reading|string|null:false｜
+|name_reading|string|null:false｜
+|birthday|date|null:false｜
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#######association
+has_many:products
+has_many:buyers
 
-Things you may want to cover:
 
-* Ruby version
+products_table
+|product_name|string|null:false｜
+|description_of_item|text|null:false｜
+|product_price|integer|null:false｜
+|product_condition_id|integer|null:false｜
+|burden_of_shipping_charge_id|integer|null:false｜
+|shipping_area_id|integer|null:false｜
+|days_to_ship_id|integer|null:false｜
+|category_id|integer|null:false｜
+|user|references|null:false,foreign_key|foreign_key: true|
 
-* System dependencies
+#######association
+has_one:buyer
+belong_to:user
 
-* Configuration
+buyers_table
+|user|references|null:false｜foreign_key: true|
+|product|references|null:false｜foreign_key: true|
 
-* Database creation
+#######association
+belong_to:product
+has_one:purchase
+belongs_to:user
 
-* Database initialization
+purchases_table
+|postal_code|string|null:false｜
+|municipalities|string|null:false｜
+|address|string|null:false｜
+|building_name|string|
+|telephone_number|string|null:false｜
+|buyer|references|null:false|foreign_key: true|
+|shipping_area_id|integer|null:false｜
 
-* How to run the test suite
+#######association
+belongs_to:buyer
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+string  >  文字
+text  > 長文
+integer > 整数
+date(datetime) > 日付
+references > 外部キー
