@@ -2,8 +2,13 @@ require 'rails_helper'
  RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
-  end
+       end
   describe "ユーザー新規登録" do
+    context  "正常系"  do
+        it"1 + 1は2である" do
+          expect(1 + 1).to eq(2) 
+      end
+     end
     context  "異常系"  do
       it"nicknameが空だと登録できない" do
         @user.nickname = ''
@@ -48,7 +53,8 @@ require 'rails_helper'
           @user.valid?
           expect(@user.errors.full_messages).to include "Email is invalid"
       end
-    end 
+    end
+   end 
   end
-end
+
 
