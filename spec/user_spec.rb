@@ -36,17 +36,17 @@ require 'rails_helper'
       it "パスワードは、半角英数字混合での入力が必須であること" do
         @user.password= "1111111"
         @user.valid?
-        expect(@user.errors.full_messages).to include "Email can't be blank"
+        expect(@user.errors.full_messages).to include "Password には英字と数字の両方を含めて設定してください"
       end
       it "パスワードとパスワード（確認）は、値の一致が必須であること。" do
           @user.password_confirmation = ''
           @user.valid?
-          expect(@user.errors.full_messages).to include "Email can't be blank"
+          expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
       end
       it "emailは、@を含む必要があること" do
           @user.email = "testtest"
           @user.valid?
-          expect(@user.errors.full_messages).to include "Email can't be blank"
+          expect(@user.errors.full_messages).to include "Email is invalid"
       end
     end 
   end
