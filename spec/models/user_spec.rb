@@ -15,10 +15,10 @@ require 'rails_helper'
         @user.valid?
         expect(@user.errors.full_messages).to include "Nickname can't be blank"
       end
-      it "emailが空では登録できない" do
-        @user.email = ''
+      it "パスワードが空では登録できない" do
+        @user.password= ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "Email can't be blank"
+        expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
       end
       it "emailが必須であること。" do
         @user.email = ''
@@ -69,24 +69,24 @@ require 'rails_helper'
         expect(@user.errors.full_messages).to include "Surname is invalid"
       end
       it "姓（全角）に半角文字が含まれていると登録できない" do
-        @user.first_name_reading = "AAAaaa"
-        @user.valid?
-        expect(@user.errors.full_messages).to include "First name reading is invalid"
-      end
-      it "名（全角）が空だと登録できない" do
-        @user.name = ""
-        @user.valid?
-        expect(@user.errors.full_messages).to include "Name is invalid"
-      end
-      it "名（全角）に半角文字が含まれていると登録できない" do
         @user.name = "AAAaaa"
         @user.valid?
         expect(@user.errors.full_messages).to include "Name is invalid"
       end
-      it "姓（カナ）が空だと登録できない" do
-        @user.nickname = ""
+      it "名（全角）が空だと登録できない" do
+        @user.surname = ""
         @user.valid?
-        expect(@user.errors.full_messages).to include "Nickname can't be blank"
+        expect(@user.errors.full_messages).to include "Surname is invalid"
+      end
+      it "名（全角）に半角文字が含まれていると登録できない" do
+        @user.surname = "AAAaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Surname is invalid"
+      end
+      it "姓（カナ）が空だと登録できない" do
+        @user.name = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Name is invalid"
       end
       it "姓（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない" do
         @user.name_reading = "tarouタロウ"
@@ -94,9 +94,9 @@ require 'rails_helper'
         expect(@user.errors.full_messages).to include "Name reading is invalid"
       end
       it "名（カナ）が空だと登録できない" do
-        @user.surname = "taroutarou"
+        @user.name_reading = ""
         @user.valid?
-        expect(@user.errors.full_messages).to include "Surname is invalid"
+        expect(@user.errors.full_messages).to include "Name reading is invalid"
       end
       it "名（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない" do
         @user.first_name_reading = "タロウ太郎"
