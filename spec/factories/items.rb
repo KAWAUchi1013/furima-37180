@@ -3,11 +3,14 @@ FactoryBot.define do
     product_name{"パソコン"}
     description_of_item{"壊れているパソコン"}
     product_price{"12345"}
-    product_condition_id{"状態悪い"}
-    burden_of_shipping_charge_id{"出品者"}
-    shipping_area_id{"沖縄県"}
-    days_to_ship_id{"4日"}
-    category_id{"電子機器"}
-    user{"タナカ"}
+    product_condition_id{"3"}
+    burden_of_shipping_charge_id{"3"}
+    shipping_area_id{"35"}
+    days_to_ship_id{"4"}
+    category_id{"3"}
+    association :user
+    after(:build) do |message|
+      message.image.attach(io: File.open('public/images/shutterstock_1005938026.jpeg'), filename: 'shutterstock_1005938026.jpeg')
+    end
   end
 end

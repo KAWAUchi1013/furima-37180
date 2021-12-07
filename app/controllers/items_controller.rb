@@ -15,6 +15,6 @@ end
   end
 
   def itemes_params
-    params.require(:item).permit(:product_name,:image, :description_of_item, :category_id, :product_condition_id,:burden_of_shipping_charge_id,:shipping_area_id,:days_to_ship_id,:product_price,:commit).merge(user_id: current_user.id)
+    params.require(:item).permit(:product_name,:image, :description_of_item, :category_id, :product_condition_id,:burden_of_shipping_charge_id,:shipping_area_id,:days_to_ship_id,:product_price).merge(user_id: current_user.id)
   end
 end

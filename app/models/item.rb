@@ -15,4 +15,6 @@ class Item < ApplicationRecord
   validates :shipping_area_id, presence: true
   validates :days_to_ship_id, presence: true
   validates :category_id, presence: true
+  validates :product_price, numericality: { in: 300..9999999 }
+  validates :image, presence: true
 end
