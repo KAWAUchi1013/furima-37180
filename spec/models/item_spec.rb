@@ -84,9 +84,24 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include "Product price must be greater than or equal to 300"
         end
         it "9999999円を超えていると出品できない" do
-          @item.product_price = 9999999999
+          @item.product_price = 9999999999999
           @item.valid?
           expect(@item.errors.full_messages).to include "Product price must be less than or equal to 9999999"
+        end
+        it "商品名が空では保存できない" do
+          @item.product_name= nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include "Product name can't be blank"
+        end
+        it "商品説明が空では保存できない" do
+          @item.description_of_item = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include "Description of item can't be blank"
+        end
+        it "金額が半角数字でなければ保存できない" do
+          @item.product_price = "あいうえお"
+          @item.valid?
+          expect(@item.errors.full_messages).to include "Product price is not a number"
         end
       end
     end
