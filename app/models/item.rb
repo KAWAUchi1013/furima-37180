@@ -17,4 +17,11 @@ class Item < ApplicationRecord
   validates :category_id, presence: true
   validates :product_price, numericality: { in: 300..9999999 }
   validates :image, presence: true
+  with_options presence: true, numericality: { other_than: 0 } do
+    validates :category_id
+    validates :days_to_ship_id
+    validates :shipping_area_id
+    validates :burden_of_shipping_charge_id
+    validates :product_condition_id
+  end
 end
