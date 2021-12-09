@@ -30,7 +30,7 @@ class ShippingArea < ActiveHash::Base
     { id: 27, name: '大阪府' },
     { id: 28, name: '兵庫県' },
     { id: 29, name: '奈良県' },
-    { id: 30, name: '和歌山県'},
+    { id: 30, name: '和歌山県' },
     { id: 31, name: '鳥取県' },
     { id: 32, name: '島根県' },
     { id: 33, name: '岡山県' },
@@ -51,4 +51,4 @@ class ShippingArea < ActiveHash::Base
   ]
   include ActiveHash::Associations
   has_many :items
-  end
+end

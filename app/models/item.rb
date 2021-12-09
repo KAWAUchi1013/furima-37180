@@ -15,7 +15,7 @@ class Item < ApplicationRecord
   validates :shipping_area_id, presence: true
   validates :days_to_ship_id, presence: true
   validates :category_id, presence: true
-  validates :product_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  validates :product_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :image, presence: true
   with_options presence: true, numericality: { other_than: 0 } do
     validates :category_id
