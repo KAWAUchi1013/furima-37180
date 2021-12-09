@@ -33,15 +33,15 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def destroy
+    @item.destroy
+    redirect_to root_path
+  end
+
 private
 
   def edit_show_update_destroy
     @item = Item.find(params[:id])
-  end
-
-  def destroy
-    @item.destroy
-    redirect_to root_path
   end
 
   def itemes_params
