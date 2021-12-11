@@ -10,11 +10,11 @@ users_table
 |birthday|date|null:false｜
 
 #######association
-has_many:products
+has_many:items
 has_many:buyers
 
 
-products_table
+items_table
 |product_name|string|null:false｜
 |description_of_item|text|null:false｜
 |product_price|integer|null:false｜
@@ -31,14 +31,14 @@ belong_to:user
 
 buyers_table
 |user|references|null:false｜foreign_key: true|
-|product|references|null:false｜foreign_key: true|
+|item|references|null:false｜foreign_key: true|
 
 #######association
-belong_to:product
-has_one:purchase
+belong_to:item
+has_one:order
 belongs_to:user
 
-purchases_table
+orders_table
 |postal_code|string|null:false｜
 |municipalities|string|null:false｜
 |address|string|null:false｜
