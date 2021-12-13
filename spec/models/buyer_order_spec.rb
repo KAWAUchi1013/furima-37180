@@ -10,6 +10,10 @@ RSpec.describe BuyerOrder, type: :model do
   describe 'ユーザー新規登録' do
     context '正常系' do
       it 'building_nameが空であっても登録できること' do
+        @buyer_order.building_name = ''
+        expect(@buyer_order).to be_valid
+      end
+      it '新規商品が出品ができる' do
         expect(@buyer_order).to be_valid
       end
     end
@@ -55,19 +59,19 @@ RSpec.describe BuyerOrder, type: :model do
         expect(@buyer_order.errors.full_messages).to include "Telephone number is invalid"
       end  
       it '都道府県に「---」が選択されている場合は購入できない' do
-        @buyer_order.shipping_area_id = ''
+        @buyer_order.shipping_area_id = '0'
         @buyer_order.valid?
-        expect(@buyer_order.errors.full_messages).to include "Shipping area can't be blank"
+        expect(@buyer_order.errors.full_messages).to include "Shipping area must be other than 0"
       end
       it '電話番号が9桁以下では購入できない' do
-        @buyer_order.telephone_number = ''
+        @buyer_order.telephone_number = '08012345'
         @buyer_order.valid?
-        expect(@buyer_order.errors.full_messages).to include "Telephone number can't be blank"
+        expect(@buyer_order.errors.full_messages).to include "Telephone number is invalid"
       end
       it '電話番号に半角数字以外が含まれている場合は購入できない' do
-        @buyer_order.telephone_number = ''
+        @buyer_order.telephone_number = '０８０1234567'
         @buyer_order.valid?
-        expect(@buyer_order.errors.full_messages).to include "Telephone number can't be blank"
+        expect(@buyer_order.errors.full_messages).to include "Telephone number is invalid"
       end
       it 'tokenが空では購入できない' do
         @buyer_order.token = ''
