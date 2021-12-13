@@ -6,7 +6,6 @@ class BuyerOrder
   VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]?\d{4}\z/
   validates :postal_code,format: { with: VALID_POSTAL_CODE_REGEX }
   validates :municipalities
-  validates :telephone_number
   validates :item_id
   validates :shipping_area_id,numericality: { other_than: 0 }
   validates :user_id
