@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :items
+  has_many :buyers
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/ }

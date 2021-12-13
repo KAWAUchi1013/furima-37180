@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :edit_show_update, only: [:edit, :show, :update]
+  before_action :edit_show_update_destroy, only: [:edit, :show, :update,:destroy]
   def index
     @items = Item.all.order('created_at DESC')
   end
@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to action: :index if @item.user != current_user
+    redirect_to action: :index if @item.user != current_user ||@item.buyer.present?
   end
 
   def show
