@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to action: :index if @item.user != current_user
+    redirect_to action: :index if @item.user != current_user ||@item.buyer.present?
   end
 
   def show

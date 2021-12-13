@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :shipping_area
   belongs_to :user
+  has_one :buyer
+  
   validates :product_name, presence: true
   validates :description_of_item, presence: true
   validates :product_price, presence: true

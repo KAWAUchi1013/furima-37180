@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :itemes_params, only: [:create,:index]
+  before_action :move_to_index, only: [:index]
+
   def index
     @order_address = BuyerOrder.new
   end
@@ -10,8 +12,17 @@ class OrdersController < ApplicationController
        pay_item
       @order_address.save
       return redirect_to root_path
+      else 
+        render :index
     end
   end 
+
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    if current_user == @item.user||@item.buyer.present? 
+       redirect_to root_path
+    end
+  end
 
   
    private
