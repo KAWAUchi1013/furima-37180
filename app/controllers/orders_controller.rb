@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :itemes_params, only: [:create,:index]
   before_action :move_to_index, only: [:index]
+  before_action :authenticate_user!, only: [ :create, :index]
 
   def index
     @order_address = BuyerOrder.new
@@ -17,12 +18,7 @@ class OrdersController < ApplicationController
     end
   end 
 
-  def move_to_index
-    @item = Item.find(params[:item_id])
-    if current_user == @item.user||@item.buyer.present? 
-       redirect_to root_path
-    end
-  end
+
 
   
    private
@@ -30,6 +26,14 @@ class OrdersController < ApplicationController
    def order_params
     params.require(:buyer_order).permit(:address, :postal_code, :municipalities, :building_name, :telephone_number, :shipping_area_id).merge(user_id: current_user.id,token: params[:token],item_id:  params[:item_id])
    end
+
+   def move_to_index
+    @item = Item.find(params[:item_id])
+    if current_user == @item.user||@item.buyer.present? 
+      
+ redirect_to root_path
+    end
+  end
 
    def itemes_params
     @item = Item.find(params[:item_id])
