@@ -9,11 +9,11 @@ RSpec.describe BuyerOrder, type: :model do
     end
   describe 'ユーザー新規登録' do
     context '正常系' do
-      it 'ユーザー新規登録ができる' do
+      it 'building_nameが空であっても登録できること' do
         expect(@buyer_order).to be_valid
       end
     end
-    context '異常系' do
+     context '異常系' do
       it '配送先の住所情報も購入の都度入力させること' do
         @buyer_order.address = ''
         @buyer_order.valid?
@@ -25,9 +25,9 @@ RSpec.describe BuyerOrder, type: :model do
         expect(@buyer_order.errors.full_messages).to include "Postal code can't be blank"
       end
       it '郵便番号は、「3桁ハイフン4桁」の半角文字列のみ保存可能なこと' do
-        @buyer_order.postal_code = ''
+        @buyer_order.postal_code = '0000-00000'
         @buyer_order.valid?
-        expect(@buyer_order.errors.full_messages).to include "Postal code can't be blank"
+        expect(@buyer_order.errors.full_messages).to include "Postal code is invalid"
       end
       it '都道府県が必須であること。' do
         @buyer_order.shipping_area_id = ''
@@ -44,11 +44,6 @@ RSpec.describe BuyerOrder, type: :model do
         @buyer_order.valid?
         expect(@buyer_order.errors.full_messages).to include "Postal code can't be blank"
       end
-      it '建物名は任意であること' do
-        @buyer_order.building_name = ''
-        @buyer_order.valid?
-        expect(@buyer_order.errors.full_messages).to include "Building name can't be blank"
-      end
       it '電話番号が必須であること' do
         @buyer_order.telephone_number = ''
         @buyer_order.valid?
@@ -58,6 +53,36 @@ RSpec.describe BuyerOrder, type: :model do
         @buyer_order.telephone_number = '000000000000'
         @buyer_order.valid?
         expect(@buyer_order.errors.full_messages).to include "Telephone number is invalid"
+      end  
+      it '都道府県に「---」が選択されている場合は購入できない' do
+        @buyer_order.shipping_area_id = ''
+        @buyer_order.valid?
+        expect(@buyer_order.errors.full_messages).to include "Shipping area can't be blank"
+      end
+      it '電話番号が9桁以下では購入できない' do
+        @buyer_order.telephone_number = ''
+        @buyer_order.valid?
+        expect(@buyer_order.errors.full_messages).to include "Telephone number can't be blank"
+      end
+      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+        @buyer_order.telephone_number = ''
+        @buyer_order.valid?
+        expect(@buyer_order.errors.full_messages).to include "Telephone number can't be blank"
+      end
+      it 'tokenが空では購入できない' do
+        @buyer_order.token = ''
+        @buyer_order.valid?
+        expect(@buyer_order.errors.full_messages).to include "Token can't be blank"
+      end
+      it 'userが紐付いていなければ購入できない' do
+        @buyer_order.user_id = ''
+        @buyer_order.valid?
+        expect(@buyer_order.errors.full_messages).to include "User can't be blank"
+      end
+      it 'itemが紐付いていなければ購入できない' do
+        @buyer_order.item_id= ''
+        @buyer_order.valid?
+        expect(@buyer_order.errors.full_messages).to include "Item can't be blank"
       end
     end
   end
