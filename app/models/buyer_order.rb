@@ -3,7 +3,7 @@ class BuyerOrder
   include ActiveModel::Model
   attr_accessor :token,:price,:address,:postal_code, :municipalities, :building_name, :telephone_number, :buyer, :shipping_area_id,:user_id,:item_id
   with_options presence: true  do
-  VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]?\d{4}\z/
+  VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
   validates :postal_code,format: { with: VALID_POSTAL_CODE_REGEX }
   validates :municipalities
   validates :item_id
