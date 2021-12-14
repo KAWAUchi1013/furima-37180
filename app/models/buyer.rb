@@ -1,5 +1,5 @@
 class Buyer < ApplicationRecord
-  belong_to :item
+  belongs_to :item
   has_one :order
   belongs_to :user
 end
